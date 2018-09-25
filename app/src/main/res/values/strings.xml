@@ -10,4 +10,5 @@
     <string name="cancel_job_btn">Cancel Job</string>
     <string name="starts_a_job">Starts a job</string>
     <string name="cancels_a_job">Cancels a job</string>
+    <string name="job_failed">Sorry, the job has failed</string>
 </resources>
