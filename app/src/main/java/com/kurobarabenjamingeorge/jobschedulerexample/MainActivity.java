@@ -7,11 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     
     private RadioGroup networkOptions;
+    private Switch deviceCharging;
     private JobScheduler mScheduler;
 
     private static final int JOB_ID = 0;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         
         networkOptions = findViewById(R.id.networkOptions);
+        deviceCharging = findViewById(R.id.deviceChargingSwitch);
     }
 
     public void scheduleJob(View view) {
@@ -43,12 +46,13 @@ public class MainActivity extends AppCompatActivity {
         JobInfo.Builder builder  = new JobInfo.Builder(JOB_ID, serviceName);
         mScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
         
-        boolean constraintSet = (networkType != JobInfo.NETWORK_TYPE_NONE);
+        boolean constraintSet = (networkType != JobInfo.NETWORK_TYPE_NONE) || deviceCharging.isChecked() ;
         
         if (constraintSet){
             //Schedulr job
             Toast.makeText(this, "Job started", Toast.LENGTH_SHORT).show();
             builder.setRequiredNetworkType(networkType);
+            builder.setRequiresCharging(deviceCharging.isChecked());
             mScheduler.schedule(builder.build());
         }else{
             Toast.makeText(this, "Please set a constraint", Toast.LENGTH_SHORT).show();
