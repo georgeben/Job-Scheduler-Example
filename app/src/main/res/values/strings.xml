@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Job Scheduler Example</string>
+    <string name="network_label">Required Network type</string>
+    <string name="no_network">None</string>
+    <string name="any_network">Any</string>
+    <string name="wifi">Wifi</string>
+    <string name="select_conditions_label">Select conditions</string>
+    <string name="device_charging_label">Device charging</string>
+    <string name="start_job_btn">Start Job</string>
+    <string name="cancel_job_btn">Cancel Job</string>
+    <string name="starts_a_job">Starts a job</string>
+    <string name="cancels_a_job">Cancels a job</string>
 </resources>
